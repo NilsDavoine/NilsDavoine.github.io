@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nils Davoine · AI engineer</title>
+<meta name="description" content="Nils Davoine, AI engineer in Luxembourg. RAG and LLM features in production for an accounting firm, measured public repositories, three years of doctoral research in machine learning.">
+<meta property="og:title" content="Nils Davoine · AI engineer">
+<meta property="og:description" content="RAG and LLM features in production for an accounting firm in Luxembourg. Measured public repositories. Former doctoral researcher, University of Luxembourg.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://nilsdavoine.github.io/">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://nilsdavoine.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231d3fbf'/%3E%3Ctext x='16' y='21.5' font-family='monospace' font-size='14' font-weight='700' fill='%23fff' text-anchor='middle'%3END%3C/text%3E%3C/svg%3E">
+<link rel="preload" href="fonts/geist.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face { font-family: "Geist"; src: url("fonts/geist.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "JetBrains Mono"; src: url("fonts/jetbrains-mono.woff2") format("woff2"); font-weight: 100 800; font-display: swap; }
+
+:root {
+  --canvas: #f6f6f3;
+  --surface: #ecece7;
+  --ink: #16181c;
+  --ink-soft: #4d535c;
+  --rule: #d6d6cf;
+  --accent: #1d3fbf;
+  --sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --gutter: clamp(16px, 5vw, 56px);
+  --measure: 62ch;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--sans);
+  font-feature-settings: "ss01";
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+p { margin: 0 0 1em; text-wrap: pretty; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 var(--gutter); }
+
+/* top bar */
+.bar { border-bottom: 1px solid var(--rule); }
+.bar .wrap { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 56px; }
+.bar .me { font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; }
+.bar nav { display: flex; gap: 20px; font-size: 0.9375rem; }
+.bar nav a { color: var(--ink-soft); text-decoration: none; padding: 8px 0; }
+.bar nav a:hover { color: var(--ink); }
+
+/* hero */
+.hero { padding: clamp(56px, 10vw, 120px) 0 clamp(48px, 7vw, 88px); }
+.hero h1 {
+  font-size: clamp(2.5rem, 6.2vw, 4.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.035em;
+  font-weight: 650;
+  margin-bottom: 28px;
+}
+.hero .lead { font-size: clamp(1.1875rem, 2.1vw, 1.4375rem); line-height: 1.45; max-width: 34ch; letter-spacing: -0.01em; margin-bottom: 20px; }
+.hero .sub { color: var(--ink-soft); max-width: 56ch; }
+.links { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; font-family: var(--mono); font-size: 0.875rem; }
+.links a { padding: 6px 0; }
+
+/* sections */
+section { padding: clamp(56px, 8vw, 96px) 0 0; }
+section > .wrap > h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+.intro { color: var(--ink-soft); max-width: var(--measure); margin-bottom: 32px; }
+
+/* production */
+.prod { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 40px 64px; align-items: start; }
+.system + .system { margin-top: 36px; padding-top: 36px; border-top: 1px solid var(--rule); }
+.system h3 { font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.01em; margin-bottom: 10px; }
+.system p { max-width: var(--measure); }
+.system .meta { font-family: var(--mono); font-size: 0.8125rem; color: var(--ink-soft); margin: 0; }
+.figures { background: var(--surface); border-radius: 10px; padding: 28px 28px 8px; position: sticky; top: 24px; }
+.figures dl { margin: 0; }
+.figures dt { font-family: var(--mono); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 500; letter-spacing: -0.03em; line-height: 1.05; }
+.figures dt small { font-size: 0.42em; letter-spacing: 0; color: var(--ink-soft); font-weight: 400; }
+.figures dd { margin: 6px 0 24px; color: var(--ink-soft); font-size: 0.9375rem; }
+.figures .note { font-size: 0.8125rem; color: var(--ink-soft); border-top: 1px solid var(--rule); padding: 14px 0 20px; margin: 0; }
+.portal { margin-top: 36px; padding-top: 36px; border-top: 1px solid var(--rule); max-width: var(--measure); }
+
+/* repositories */
+.repos { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.repos li {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) minmax(0, 17rem);
+  gap: 8px 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.repos .name { font-family: var(--mono); font-size: 0.9375rem; font-weight: 500; word-break: break-word; }
+.repos .what { margin: 0; }
+.repos .key { margin: 0; font-family: var(--mono); font-size: 0.8125rem; line-height: 1.5; color: var(--ink); }
+.repos .key b { font-weight: 600; color: var(--accent); }
+.built { margin-top: 28px; max-width: var(--measure); color: var(--ink-soft); font-size: 0.9688rem; }
+
+/* experience */
+.xp { margin: 0; padding: 0; list-style: none; }
+.xp > li { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 4px 32px; padding: 22px 0; border-top: 1px solid var(--rule); }
+.xp > li:first-child { border-top: 1px solid var(--ink); }
+.xp .when { font-family: var(--mono); font-size: 0.8125rem; color: var(--ink-soft); padding-top: 4px; }
+.xp h3 { font-size: 1.0625rem; font-weight: 600; margin-bottom: 4px; }
+.xp h3 span { font-weight: 400; color: var(--ink-soft); }
+.xp ul { margin: 6px 0 0; padding-left: 1.1em; max-width: var(--measure); }
+.xp ul li { margin: 0 0 4px; }
+
+/* research */
+.paper { border-left: 3px solid var(--accent); padding: 4px 0 4px 22px; max-width: 70ch; }
+.paper .title { font-size: 1.1875rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.35; margin-bottom: 8px; }
+.paper .authors { color: var(--ink-soft); margin-bottom: 4px; }
+.paper .refs { font-family: var(--mono); font-size: 0.8125rem; display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 12px; }
+.edu { margin-top: 36px; max-width: var(--measure); }
+
+/* close */
+.close { padding: clamp(64px, 9vw, 112px) 0 clamp(40px, 6vw, 64px); }
+.close .inner { border-top: 1px solid var(--ink); padding-top: 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; }
+.close p { margin: 0; max-width: 40ch; }
+.close .links { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .prod { grid-template-columns: 1fr; }
+  .figures { position: static; }
+  .repos li { grid-template-columns: 1fr; gap: 6px; }
+}
+@media (max-width: 640px) {
+  body { font-size: 1rem; }
+  .bar nav { gap: 14px; font-size: 0.875rem; }
+  .bar nav .wide { display: none; }
+  .xp > li { grid-template-columns: 1fr; gap: 2px; }
+  .figures { padding: 22px 20px 4px; }
+}
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div class="wrap">
+    <a class="me" href="#top">Nils Davoine</a>
+    <nav aria-label="Sections">
+      <a href="#production">Production</a>
+      <a href="#work">Work</a>
+      <a class="wide" href="#experience">Experience</a>
+      <a class="wide" href="#research">Research</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>Nils Davoine</h1>
+      <p class="lead">AI engineer in Luxembourg. I build RAG and LLM features that run in production for an accounting firm.</p>
+      <p class="sub">Before that, three years of doctoral research in machine learning at the University of Luxembourg, and co-author of the QCell dataset. Founder of AiAllDesk.</p>
+      <div class="links">
+        <a href="https://github.com/NilsDavoine">github.com/NilsDavoine</a>
+        <a href="https://lu.linkedin.com/in/nils-davoine-81b46b19b">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="production" aria-labelledby="h-production">
+    <div class="wrap">
+      <h2 id="h-production">In production</h2>
+      <p class="intro">Two retrieval assistants for an accounting firm in Luxembourg, used by its staff since August 2026. The code and the documents are the firm's and stay private.</p>
+      <div class="prod">
+        <div>
+          <article class="system">
+            <h3>Document assistant</h3>
+            <p>Staff ask questions in French, English or German and get answers from the firm's PDFs, e-mails and scans. Pages are read by OCR and split by section with a context prefix. Retrieval is hybrid: BM25 and pgvector, fused by Reciprocal Rank Fusion, then reranked. Access rights are applied inside the retrieval query.</p>
+            <p>One real failure shaped it: two documents said 25.5 and 26, and an answer said 25. Ranking and the cross-source number checks were rebuilt after it.</p>
+          </article>
+          <article class="system">
+            <h3>Onboarding assistant</h3>
+            <p>Guides new staff through the firm's procedures, manuals, templates and FAQ, a few hundred documents. Each chunk is one procedure step, and the assistant remembers where the newcomer is in their path. HR documents are excluded from the index.</p>
+          </article>
+        </div>
+        <aside class="figures" aria-label="Document assistant in production">
+          <dl>
+            <dt>~100 <small>questions a week</small></dt>
+            <dd>asked to the document assistant</dd>
+            <dt>~6&nbsp;s <small>per answer</small></dt>
+            <dd>give or take 3&nbsp;s</dd>
+          </dl>
+          <p class="note">Approximate production figures, internal use by fewer than ten people.</p>
+        </aside>
+      </div>
+      <div class="portal">
+        <p>For the same firm I built the client portal and the staff workstation on Microsoft Power Pages and Dataverse. Each client company sees its own documents, invoices and requests, and never another company's. <a href="https://nilsdavoine.github.io/agir-client-portal-demos/">Watch the playable demos</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" aria-labelledby="h-work">
+    <div class="wrap">
+      <h2 id="h-work">Public work</h2>
+      <p class="intro">Rebuilt from scratch on invented data, after systems I built for real use. Each one says what it measures, and every number comes from a script in the repository.</p>
+      <ul class="repos">
+        <li>
+          <a class="name" href="https://github.com/NilsDavoine/rag-accounting-docs">rag-accounting-docs</a>
+          <p class="what">Hybrid RAG over invented FR/EN/DE accounting documents, with refusals, number-conflict checks and per-company isolation tested by breaking it on purpose.</p>
+          <p class="key">Reranking lifts MRR@8 from <b>0.68 to 0.98</b> on 148 questions. <b>0</b> passages from another company.</p>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/NilsDavoine/rules-vs-llm-filing-bench">rules-vs-llm-filing-bench</a>
+          <p class="what">Hand-written rules against small local LLMs for naming and filing accounting documents. Measure before adding AI.</p>
+          <p class="key">Rules: <b>88&nbsp;%</b> exact on unseen pieces in about 1&nbsp;ms. Qwen2.5-1.5B: 24&nbsp;% in 10.9&nbsp;s.</p>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/NilsDavoine/llm-structured-requests">llm-structured-requests</a>
+          <p class="what">One sentence to a structured client request: strict schema, closed document list, personal data removed before the model is called.</p>
+          <p class="key"><b>0</b> personal data sent across 60 FR/EN/DE cases. 85&nbsp;% valid output after one repair with a 1.5B local model.</p>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/NilsDavoine/invoice-ocr-local">invoice-ocr-local</a>
+          <p class="what">Scanned invoices read on your own machine, checked for coherence and exported as EN 16931 / UBL XML, or set aside for a person.</p>
+          <p class="key"><b>1,800</b> simulated digit misreads: every one that changed an amount, the VAT breakdown or the VAT number was flagged.</p>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/NilsDavoine/multi-agent-video-pipeline">multi-agent-video-pipeline</a>
+          <p class="what">Agents with typed contracts turn a brief into a short explainer video. Quality gates on the finished file decide if it can be published.</p>
+          <p class="key">Example passes with a word error rate of <b>1.6&nbsp;%</b>. One off-script scene: <b>blocked</b>.</p>
+        </li>
+        <li>
+          <a class="name" href="https://github.com/NilsDavoine/agir-client-portal-demos">agir-client-portal-demos</a>
+          <p class="what">Playable replicas of the client portal and staff workstation, built from the real page templates and scripts with a fake server inside the page.</p>
+          <p class="key"><b>18</b> demos, including drafting a client request with an LLM.</p>
+        </li>
+      </ul>
+      <p class="built">How these were built: I set the architecture, the measurements and the acceptance criteria, and used Claude Code as a coding agent to write most of the code to that brief. The guardrails are tested by mutation: each one is broken on purpose to check that its test fails.</p>
+    </div>
+  </section>
+
+  <section id="experience" aria-labelledby="h-experience">
+    <div class="wrap">
+      <h2 id="h-experience">Experience</h2>
+      <ul class="xp">
+        <li>
+          <span class="when">Jan 2026 – now</span>
+          <div>
+            <h3>Digital transformation consultant <span>· accounting firm, Luxembourg</span></h3>
+            <ul>
+              <li>Two RAG assistants, from the needs of the accounting teams to production and monitoring.</li>
+              <li>Client portal and staff workstation on Power Pages and Dataverse, with strict per-company isolation.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span class="when">Sep 2025 – Dec 2025</span>
+          <div>
+            <h3>Full-stack developer <span>· Equinoxe, events, Sélestat (France)</span></h3>
+            <ul>
+              <li>Six mobile and web apps for events, delivered in four months.</li>
+              <li>Generative video content pipeline (LangChain, LLM APIs, Kling AI): several hours of immersive content.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span class="when">Sep 2022 – Aug 2025</span>
+          <div>
+            <h3>Doctoral researcher in machine learning <span>· University of Luxembourg</span></h3>
+            <ul>
+              <li>Machine learning and deep learning models (PyTorch, TensorFlow, scikit-learn), including graph neural networks, to predict physico-chemical properties of biological systems.</li>
+              <li>A surrogate model integrated into a C++ scientific simulator, replacing costly exact recalculations.</li>
+              <li>Eleven internal software tools; contributions to large shared codebases; taught programming.</li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span class="when">2022 – 2025</span>
+          <div>
+            <h3>Founder <span>· three online products</span></h3>
+            <ul>
+              <li>Web data collection, SEO keyword research and automatic video editing, each run for one to three years, now discontinued.</li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="research" aria-labelledby="h-research">
+    <div class="wrap">
+      <h2 id="h-research">Research</h2>
+      <p class="intro">Training data for machine learning in chemistry: 525,000 new quantum-mechanical calculations on biomolecular fragments.</p>
+      <div class="paper">
+        <p class="title">QCell: comprehensive quantum-mechanical dataset spanning diverse biomolecular fragments</p>
+        <p class="authors">A. Kabylda, S. Suárez-Dou, N. Davoine, F. N. Brünig, A. Tkatchenko</p>
+        <p><i>AI for Science</i> (IOP Publishing), vol. 2, no. 2, 025003, 2026.</p>
+        <div class="refs">
+          <a href="https://doi.org/10.1088/3050-287X/ae5267">DOI 10.1088/3050-287X/ae5267</a>
+          <a href="https://arxiv.org/abs/2510.09939">arXiv 2510.09939</a>
+          <a href="https://doi.org/10.5281/zenodo.18385612">Dataset on Zenodo</a>
+        </div>
+      </div>
+      <div class="edu">
+        <h3 style="font-size:1.0625rem;font-weight:600;margin-bottom:4px">Education</h3>
+        <p>Master in Machine Learning &amp; In Silico Drug Design, Université Paris Cité, 2020 – 2022, high distinction.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="close">
+  <div class="wrap"><div class="inner">
+    <p>Based in Luxembourg. Works in French, English and German.</p>
+    <div class="links">
+      <a href="https://github.com/NilsDavoine">GitHub</a>
+      <a href="https://lu.linkedin.com/in/nils-davoine-81b46b19b">LinkedIn</a>
+    </div>
+  </div></div>
+</footer>
+
+</body>
+</html>
